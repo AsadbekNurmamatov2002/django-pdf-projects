@@ -1,0 +1,94 @@
+{% include "_base.html" %}
+{% load static %}
+{% block content %}
+<style type="text/css">
+
+body{
+  padding:0px;
+  margin:0px;
+  width: 100%;
+  height: 100%;
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contaner{
+  max-width: 1270px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+}
+.text-center-bar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap:0px;
+  padding: 1px;
+}
+#myrow{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.contaner .text-bir{
+  padding:0px;
+  margin:0px;
+  font-size: 18px;
+  text-align: center;
+}
+
+</style>
+     <div class="contaner">
+      <div class="text-center-bar">
+    <p class='text-bir'>O'ZBEKISTON RESPUBLIKASI OLIY TA'LIM, FAN VA INNOVATSIYALAR VAZIRLIGI</p>
+    <p class='text-bir'>O'zbekiston-Finlandiya pedagogika instituti</p>
+    <p class='text-bir'>BAHOLASH QAYDNOMASI N%__________</p>
+      </div>
+    <p style=" padding:0px; margin:0px; font-size: 15px;">Fakultet nome:<b> {{baho.grops.get_fakulteti_display }}</b></p>
+    <p style=" padding:0px; margin:0px; font-size: 15px;">Ta'im yo'nalishi (mutaxassislik) nome:<b> {{baho.grops.get_yunalish_display}}</b></p>
+
+    <p style=" padding:0px; margin:0px; font-size: 15px;"> O'qov yili:<b> {{baho.grops.uqov_yil}} </b>o'qov yili<b> {{baho.grops.get_smester_display}}</b> semester  {{ baho.grops.gruh_nomi}}</b> - guruh</p>
+    <p style=" padding:0px; margin:0px; font-size: 15px;"> Fan nome :<b> {{baho.fan }}</b></p>
+    <p style=" padding:0px; margin:0px; font-size: 15px;">Fan o'qitovchilari: ____________________________________________________________________</p>
+   
+    <p style=" padding:0px; margin:0px; font-size: 15px;"> Semestrda danga ajratilgan umumiy soadtlar/kredit: <b>{{baho.fan_soat}} /{{baho.fan_kredit}}</b></p>
+    <p style=" padding:0px; margin:0px; font-size: 15px;"> Oraliq nazorat/qayta topshirish o'tkazilgan sana:______________________________________</p>
+    <div style=" width:100%;">
+      <table class="table" style="border:1px solid black; width:100%">
+          <tr style="height:30px">
+            <th style="width:5%">N%</th>
+            <th style="width:40%">Talaba familiyasi, ismi, otasining ismi</th>
+            <th style="width:13%">Talaba ID raqami</th>
+            <th style="width:25%">To'plangan ball Maksimal ball - 50 Minimal ball - 30</th>
+            <th style="width:17%; text-align: center;">Talabaning bahosi</th>
+          </tr>
+          {% for talabab in talababoholash %}
+          <tr style="height:18px">
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ talabab.talaba.ism }} {{ talabab.talaba.familya }} {{ talabab.talaba.ota }}</td>
+            <td>{{talabab.talaba.talaba_id}}</td>
+            <td>{{talabab.ball}}</td>
+            <td>{{talabab.bahosi}}</td>
+          </tr>
+          {% endfor %}
+      </table>
+      </div>
+      <div>
+        <p style=" padding:0px; margin:7px 0px 0px 0px; font-size: 15px;">Jami talaba: {{baho.grop.talaba_soni}}, shundan, 5:___ , 4:____ , 3:____ , 2:_____, Kelmadi:____</p>
+        
+        <p style=" padding:0px; margin:0px; font-size: 15px;">Fakultet dekan {{baho.dekan }}</p> 
+        <div id="myrow" style="display: flex; ">
+          <div id="mycol">
+           <p style=" padding:0px; margin:0px; font-size: 15px;" >Kafedra mudiri        Imzo_______   F.I.SH _______</p>
+         </div>
+         <div id="mycol">
+            <p style="padding:0px; margin:0px; font-size: 15px;"> Oraliq nazorat mas'ul       Imzo _______  F.I.SH _______</p>
+         </div>
+         </div>
+        <p style=" padding:0px; margin:0px; font-size: 15px;"> Ro'yxatga olindi: N%______  Sana: ____________</p>
+        <p style=" padding:0px; margin:0px; font-size: 15px;"> O'qov-uslubiy boshqarma boshlig'i ___________{{baho.boshqarma_boshligi}}</p>
+    </div>
+{% endblock content %}

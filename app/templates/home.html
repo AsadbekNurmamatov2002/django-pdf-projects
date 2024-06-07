@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for g in grops %}
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{g.gruh_nomi}}-Gruh</h5>
+          <p class="card-text">Testlat</p>
+          {% if g.bahosi_set.all %}
+          {% for b in g.bahosi_set.all %}
+          <a href="{% url "pdf" pk=b.id %}" class="card-text">{{b.fan}}</a>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
