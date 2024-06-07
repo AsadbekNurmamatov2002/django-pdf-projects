@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-^$kjy4a6jt(gan3((kgnu%ilmct0wknk%x+z-d_vb$-o72hm#*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', 'pdf-taupe-nu.vercel.app']
 
 
 # Application definition
