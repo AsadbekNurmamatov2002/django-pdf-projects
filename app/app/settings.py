@@ -14,8 +14,7 @@ SECRET_KEY = 'django-insecure-^$kjy4a6jt(gan3((kgnu%ilmct0wknk%x+z-d_vb$-o72hm#*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', 'pdf-taupe-nu.vercel.app']
-
+ALLOWED_HOSTS = ['.vercel.app','.now.sh', 'pdf-taupe-nu.vercel.app']
 
 # Application definition
 
@@ -246,6 +245,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'static')
 ]
